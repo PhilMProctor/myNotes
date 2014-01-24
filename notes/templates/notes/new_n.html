@@ -1,0 +1,26 @@
+{% extends "notes/main.html" %}
+{% block side %}
+{% endblock side %}
+{% block content %}
+<!--{% load crispy_forms_tags %}-->
+<div class="container-fluid">
+		<form action="/notes/new_n/" method="post">
+		{% csrf_token %}
+			<!--<p>
+				{{form.as_p}}
+			</p> -->
+		<!--<input type='hidden' name='owner' id="owner" value={{user_id}} /> -->
+		<p><label for="id_subject">Subject:</label> <input class="span7" id="id_subject" maxlength="200" name="subject" type="text" /></p>
+		<p><label for="id_content">Content:</label> <textarea class="span7" cols="300" id="id_content" name="content" rows="10"></textarea></p>
+		<p><label for="id_notebook">Notebook:</label> <select id="id_notebook" name="notebook">
+		<option value="" selected="selected">---------</option>
+		<option value="1">Work</option>
+		<option value="2">Help</option>
+		</select></p>
+		<p><label for="id_tags">Tags:</label> <input class="span3" id="id_tags" maxlength="50" name="tags" type="text" /></p>
+
+		<button type="submit" name="submit" class="btn btn-success" >Save</button>
+		<button href="/notes" class="btn btn-info" >Cancel</button>
+		</form>
+</div>
+{% endblock content %}

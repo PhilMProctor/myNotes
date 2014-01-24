@@ -1,0 +1,18 @@
+{% extends "notes/main.html" %}
+{% block side %}
+{% endblock side %}
+{% block content %}
+
+<div class="container-fluid">
+		<form action="/notes/new_nb/" method="post">
+		{% csrf_token %}
+			<!--<p>
+				{{form.as_p}}
+			</p> -->
+		<!--<input type='hidden' name='owner' id="owner" value={{user_id}} /> -->
+		<p><label for="id_name">Subject:</label> <input class="span7" id="id_name" maxlength="200" name="name" type="text" /></p>
+		<button type="submit" name="submit" class="btn btn-success" >Save</button>
+		<button href="/notes" class="btn btn-info" >Cancel</button>
+		</form>
+</div>
+{% endblock content %}

@@ -1,0 +1,23 @@
+{% extends "notes/main.html" %}
+{% block side %}
+{% endblock side %}
+{% block content %}
+<div class="container-fluid">
+	<div class="row-fluid">
+		<div class="span2">
+			<h4>{{n.subject}}</h4>
+		</div>
+		<div class="span1 offset5">
+			<a href="/notes/{{n.id}}/edit_n">edit </a>
+			&nbsp;&nbsp;
+			<a href="/notes/"> close</a>
+		</div>
+	</div>
+				
+			
+		<textarea class="notebox" rows="30">{{n.content}}</textarea>
+	
+	<p class="text-info">Notebook: {{n.notebook}} &nbsp;&nbsp;Tags: {{n.tags}}</p>
+</div>
+				
+{% endblock content %}

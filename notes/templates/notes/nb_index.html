@@ -1,0 +1,27 @@
+{% extends "notes/main.html" %}
+{% block content %}
+<div class="span7">
+	<h4>
+		NoteBook: &nbsp; {{nb_select.name}}
+	</h4>
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Subject</th>
+				<th>Created</th>
+				<th>Modified</th>
+			</tr>
+		</thead>
+		{% for note in notes_list %}
+		<tbody>
+                <tr>
+					<td><i class=" icon-chevron-right"></i><a href="/notes/{{note.id}}/open_n" class="nounderline">{{note.subject}}</a></td>
+					<td>{{note.create_date}}</td>
+					<td>{{note.mod_date}}</td>
+			</tr>
+		</tbody>
+		{% endfor %}
+	</table>
+</div>
+            
+{% endblock %}
