@@ -1,1 +1,4 @@
 *.sqlite3
+settings.py*
+*.pem
+myNotes/static/admin/*
