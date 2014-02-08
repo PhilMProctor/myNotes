@@ -13,9 +13,8 @@
 			<a href="/notes/"> close</a>
 		</div>
 	</div>
-				
-			
-		<textarea class="notebox" rows="30">{{n.content}}</textarea>
+
+	{{content | safe | linebreaks}}
 	
 	<p class="text-info">Notebook: {{n.notebook}} &nbsp;&nbsp;Tags: {{n.tags}}</p>
 </div>

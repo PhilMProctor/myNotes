@@ -14,8 +14,9 @@
 		<p><label for="id_content">Content:</label> <textarea class="span7" cols="300" id="id_content" name="content" rows="10"></textarea></p>
 		<p><label for="id_notebook">Notebook:</label> <select id="id_notebook" name="notebook">
 		<option value="" selected="selected">---------</option>
-		<option value="1">Work</option>
-		<option value="2">Help</option>
+		{% for nb_list in notebook_list %}
+			<option value="{{nb_list.id}}">{{ nb_list.name }}</option>
+			{% endfor %}
 		</select></p>
 		<p><label for="id_tags">Tags:</label> <input class="span3" id="id_tags" maxlength="50" name="tags" type="text" /></p>
 

@@ -6,6 +6,9 @@ class Notebook(models.Model):
 	def __unicode__(self):
 		return self.name
 	
+	def stat(self,notebook_id):
+		return self.Note.objects.filter(notebook = 1).count()
+	
 class Note(models.Model):
 	owner = models.IntegerField()
 	subject = models.CharField(max_length=200)
@@ -14,8 +17,11 @@ class Note(models.Model):
 	create_date = models.DateTimeField('date created', auto_now_add=True)
 	mod_date = models.DateTimeField('date modified',auto_now=True)
 	tags = models.TextField(max_length=200, blank='True', null='True')
+		
 	def __unicode__(self):
 		return self.subject
+	
+	
 	
 class Tag(models.Model):
 	name = models.CharField(max_length=50)

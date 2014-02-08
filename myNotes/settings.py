@@ -83,6 +83,12 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 
-STATIC_URL = '/static/'
+SESSION_COOKIE_SECURE = True
+HTTPS_SUPPORT = True
+
+STATIC_ROOT = os.path.join(os.path.dirname(
+             os.path.abspath(__file__)), 'static')
+
+STATIC_URL = 'https://mynotes.muddyoutnback.com/static/notes/'
 # URL of the login page.
 LOGIN_URL = '/login/'
