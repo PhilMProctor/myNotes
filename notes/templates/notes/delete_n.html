@@ -1,0 +1,31 @@
+{% extends "notes/main.html" %}
+{% block side %}
+{% endblock side %}
+{% block content %}
+<div class="container-fluid">
+	<div class="row-fluid">
+		<div class="span5">
+			
+			<form class="form-inline" action="/notes/{{n.id}}/delete_n/" method="post">
+				{% csrf_token %}
+				<fieldset>
+					<button class="btn btn-large btn-danger" type="submit">Delete</button>
+				</fieldset>
+			</form>
+		</div>
+		
+	</div>
+	<div class="row-fluid">
+		<div class="span2">
+			<h4>{{n.subject}}</h4>
+		</div>
+		<div class="span1 offset5">
+			<a href="/notes/">Cancel</a>
+		</div>
+	</div>
+
+	{{content | safe | linebreaks}}
+	
+	<p class="text-info">Notebook: {{n.notebook}} &nbsp;&nbsp;Tags: {{n.tags}}</p>
+				
+{% endblock content %}

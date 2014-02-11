@@ -7,6 +7,17 @@
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
  */
+div.hr {
+background: #fff  no-repeat scroll center;
+margin-left: 15em;
+margin-right: 15em;
+width:50em;
+height:2px;
+}
+
+div.hr hr {
+display: none;
+}
 
 .clearfix {
   *zoom: 1;

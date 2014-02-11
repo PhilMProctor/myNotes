@@ -20,6 +20,17 @@ border-color: Transparent;
 overflow: hidden;
 }
 
+div.hr {
+background: #fff  no-repeat scroll center;
+margin-left: 15em;
+margin-right: 15em;
+width:50em;
+height:2px;
+}
+
+div.hr hr {
+display: none;
+}
 /* End of My CSS Input */
 
 .comments {

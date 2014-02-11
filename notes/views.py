@@ -11,8 +11,11 @@ from notes.models import Note, Notebook
 from notes.forms import NoteForm, NoteBookForm
 import markdown2
 
-#def notebook_stat(self):
-#	return self.Note.objects.filter(notebook_id = notebook.notebook.id).count()
+#def n_stat(N_owner):
+	#return self.Note.objects.filter(notebook_id = notebook.notebook.id).count()
+#	notes_count = Note.objects.filter(owner = N_owner()).count()
+#	return notes_count
+	
 
 @login_required
 def index(request):
@@ -90,6 +93,23 @@ def open_n(request, Note_id):
 			   'notebook_list': notebook_list,
 			   'content': content}
 	return render(request,'notes/open_n.html',args)
+
+@login_required
+def delete_n(request, Note_id):
+	
+	if request.POST:
+		Note.objects.filter(id = Note_id).delete()
+		return HttpResponseRedirect('/notes/')
+	else:
+		notebook_list = Notebook.objects.order_by('-name')
+		notes_count = Note.objects.filter(owner = request.user.id).count()
+		n = Note.objects.get(pk=Note_id)
+		content = markdown2.markdown(n.content)
+		args = {'n': n,
+			   'notes_count': notes_count,
+			   'notebook_list': notebook_list,
+			   'content': content}
+		return render(request,'notes/delete_n.html',args)
 
 @login_required
 def new_nb(request):

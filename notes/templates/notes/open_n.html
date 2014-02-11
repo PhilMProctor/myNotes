@@ -4,16 +4,18 @@
 {% block content %}
 <div class="container-fluid">
 	<div class="row-fluid">
-		<div class="span2">
+		<div class="span3">
 			<h4>{{n.subject}}</h4>
 		</div>
-		<div class="span1 offset5">
-			<a href="/notes/{{n.id}}/edit_n">edit </a>
+		<div class="span2 offset4">
+			<a href="/notes/{{n.id}}/edit_n"><i class="icon-edit"></i>edit </a>
 			&nbsp;&nbsp;
-			<a href="/notes/"> close</a>
+			<a href="/notes/"><i class="icon-ok"></i> close</a>
+			&nbsp;&nbsp;
+			<a href="/notes/{{n.id}}/delete_n"><i class="icon-remove"></i>Delete </a>
 		</div>
 	</div>
-
+	<hr style="background: #C0C0C0; width: 75%; height: 2px;">
 	{{content | safe | linebreaks}}
 	
 	<p class="text-info">Notebook: {{n.notebook}} &nbsp;&nbsp;Tags: {{n.tags}}</p>
