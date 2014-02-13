@@ -10,7 +10,7 @@
 			<p><label for="subject">Subject:</label> <input class="span7" id="subject" maxlength="200" name="subject" type="text" value="{{n.subject}}" /></p>
 			<p><label for="content">Content:</label> <textarea class="span7" cols="300" id="content" name="content" rows="10">{{n.content}}</textarea></p>
 		<p><label for="notebook">Notebook:</label> <select id="notebook" name="notebook">
-			<option value="" selected="selected">{{n.notebook}}</option>
+			<option value="{{n.notebook_id}}" selected="selected">{{n.notebook}}</option>
 			{% for nb_list in notebook_list %}
 			<option value="{{nb_list.id}}">{{ nb_list.name }}</option>
 			{% endfor %}
