@@ -39,10 +39,13 @@
        </ul>
 		<li><a href="#"><i class="icon-file"></i> Notes ({{notes_count}})</a></li>
 	<li class="divider"></li>
+		{% for tag in tag_cloud %}
+		<li><a href="/notes/{{tag}}/tag_search">{{tag}}</a></li>
+		{% endfor %}
 </ul>
 
    </div>
-   <div class="span9">
+   <div class="span10">
     <div class="navbar navbar-inverse navbar-fixed-top">
       <div class="navbar-inner">
           <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">

@@ -16,6 +16,6 @@ urlpatterns = patterns('',
     url(r'^login/$', 'django.contrib.auth.views.login'),
     url(r'^logout/$', logout_page),
     url(r'^admin/', include(admin.site.urls)),
-	url(r'^notes/', include('notes.urls', namespace="notes")),
+	url(r'^notes/', include('notes.urls', namespace='notes')),
 	#url('^markdown/', include( 'django_markdown.urls')),
 )

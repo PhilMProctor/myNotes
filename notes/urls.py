@@ -8,6 +8,7 @@ urlpatterns = patterns('',
 	url(r'^(?P<Note_id>\d+)/open_n/$', views.open_n, name='open_n'),
 	url(r'^(?P<Note_id>\d+)/delete_n/$', views.delete_n, name='delete_n'),
 	url(r'^(?P<NoteBook_id>\d+)/nb_index/$', views.nb_index, name='nb_index'),
+	url(r'^(?P<tag_name>[\w|\W]+)/tag_search/$', views.tag_search, name='tag_search'),
 	url(r'^new_n/$', views.new_n, name='new_n'),
 	url(r'^new_nb/$', views.new_nb, name='new_nb'),
 )

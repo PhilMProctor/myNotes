@@ -8,6 +8,7 @@ from django.core.context_processors import csrf
 import datetime
 from notes.models import Note, Notebook
 from notes.forms import NoteForm, NoteBookForm
+from notes.utils import tag_cloud
 import markdown2
 	
 def Ncount(Nowner):
@@ -19,7 +20,7 @@ def aNBcount(Nowner):
 	return all_notebook_count
 
 def nList(Nowner):
-	notes_list = Note.objects.filter(owner = Nowner)
+	notes_list = Note.objects.filter(owner = Nowner).exclude(notebook = 3)
 	return notes_list
 	
 
@@ -31,7 +32,8 @@ def index(request):
 			   'user_username': request.user.username,
 			   'user_id': request.user.id,
 			   'notes_count': Ncount(request.user.id),
-			   'all_notebook_count': aNBcount(request.user.id)
+			   'all_notebook_count': aNBcount(request.user.id),
+			   'tag_cloud': tag_cloud()
 			   }
 	return render(request,'notes/index.html',args)
 
@@ -67,7 +69,7 @@ def edit_n(request, Note_id):
 		form = NoteForm(request.POST, instance=Note.objects.get(pk=Note_id))
 		if form.is_valid():
 			form.save()
-			return HttpResponseRedirect('/notes/')
+			return HttpResponseRedirect('/notes/'+ Note_id +'/open_n')
 	else:
 		notebook_list = Notebook.objects.order_by('-name')
 		STATIC_URL = 'https://mynotes.muddyoutnback.com/static/notes/'
@@ -148,4 +150,19 @@ def nb_index(request, NoteBook_id):
 			   }
 	return render(request,'notes/nb_index.html',args)
 
+@login_required
+def tag_search(request, tag_name):
+	notes_list = Note.objects.filter(owner = request.user.id, tags = tag_name)
+	#nb_select = Notebook.objects.get(pk = NoteBook_id)
+	notebook_list = Notebook.objects.order_by('-name')
+	args = {'notes_list': notes_list,
+			#'nb_select': nb_select,
+			'tag_name': tag_name,
+			'notebook_list': notebook_list,
+			   'user_username': request.user.username,
+			   'user_id': request.user.id,
+			   'notes_count': Ncount(request.user.id),
+			   'all_notebook_count': aNBcount(request.user.id)
+			   }
+	return render(request,'notes/tag_search.html',args)
 
